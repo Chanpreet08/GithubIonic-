@@ -55765,18 +55765,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var Users = (function () {
     function Users(navCtrl, githubUsers) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.githubUsers = githubUsers;
         githubUsers.load().subscribe(function (users) {
-            console.log(users);
+            _this.users = users;
         });
     }
+    ;
     return Users;
 }());
 Users = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-users',template:/*ion-inline-start:"/home/cc/ionic/GithubIonic-/src/pages/users/users.html"*/'<!--\n  Generated template for the Users page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button icon-only menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>users</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <h3> Users Page </h3>\n</ion-content>\n'/*ion-inline-end:"/home/cc/ionic/GithubIonic-/src/pages/users/users.html"*/,
+        selector: 'page-users',template:/*ion-inline-start:"/home/cc/ionic/GithubIonic-/src/pages/users/users.html"*/'<!--\n  Generated template for the Users page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button icon-only menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>users</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n    <button ion-item *ngFor="let user of users">\n      <ion-avatar item-left>\n        <img [src]="user.avatar_url">\n      </ion-avatar>\n      <h2>{{ user.login }}</h2>\n      <ion-icon name="arrow-forward" item-right></ion-icon>\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/cc/ionic/GithubIonic-/src/pages/users/users.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_github_users__["a" /* GithubUsers */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_github_users__["a" /* GithubUsers */]) === "function" && _b || Object])
 ], Users);
@@ -111481,10 +111483,9 @@ var GithubUsers = (function () {
 }());
 GithubUsers = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
 ], GithubUsers);
 
-var _a;
 //# sourceMappingURL=github-users.js.map
 
 /***/ }),
