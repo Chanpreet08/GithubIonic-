@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+
+import { User } from '../../models/user';
+
+import {  GithubUsers } from '../../providers/github-users';
+import { UserDetails } from '../user-details/user-details';
 
 /**
  * Generated class for the Users page.
@@ -13,12 +18,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'users.html',
 })
 export class Users {
+  users: User[];
+  originalUsers:User[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private githubUsers: GithubUsers) {
+    githubUsers.load().subscribe(users => {
+      this.users = users;
+      this.originalUsers = users;
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('Hello Users');
+
+  goToDetails(login:string)
+  {
+    this.navCtrl.push(UserDetails,{login});
   }
 
+  search(searchEvent)
+  {
+    let term = searchEvent.target.value;
+
+    if(term.trim() === '' || term.trim().length<3)
+    {
+        this.users = this.originalUsers;
+    }
+    else{
+      this.githubUsers.searchUsers(term).subscribe(users => {
+        this.users = users;
+      });
+    }
+  }
 }
