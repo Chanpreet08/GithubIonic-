@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { Users } from '../pages/users/users';
 import { Repos } from '../pages/repos/repos';
 import { Organisations } from '../pages/organisations/organisations';
+import {UserDetails } from '../pages/user-details/user-details'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,8 @@ import { GithubUsers } from '../providers/github-users';
     MyApp,
     Users,
     Repos,
-    Organisations
+    Organisations,
+    UserDetails
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { GithubUsers } from '../providers/github-users';
     MyApp,
     Users,
     Repos,
-    Organisations
+    Organisations,
+    UserDetails
   ],
   providers: [
     StatusBar,
