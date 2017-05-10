@@ -17,11 +17,11 @@ import {User} from '../../models/user';
 export class UserDetails {
 
   login:string;
-  user:User[];
+  user:User;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private githubUsers : GithubUsers) {
     this.login = navParams.get('login');
-    githubUsers.load().subscribe(user =>{
+    githubUsers.loadDetails(this.login).subscribe(user =>{
       this.user = user;
       console.log(user);
     });
